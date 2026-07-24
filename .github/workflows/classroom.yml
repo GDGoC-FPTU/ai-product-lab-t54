@@ -1,0 +1,110 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Problem Scan
+      id: problem-scan
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Problem Scan
+        setup-command: pip install -r requirements.txt
+        command: python autograder/autograder.py --check-file-1
+        timeout: 10
+        max-score: 10
+    - name: Deep-Dive Report
+      id: deep-dive-report
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Deep-Dive Report
+        setup-command: ''
+        command: python autograder/autograder.py --check-file-2
+        timeout: 10
+        max-score: 12
+    - name: AI Log
+      id: ai-log
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: AI Log
+        setup-command: ''
+        command: python autograder/autograder.py --check-file-3
+        timeout: 10
+        max-score: 12
+    - name: Workflow Diagram
+      id: workflow-diagram
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Workflow Diagram
+        setup-command: ''
+        command: python autograder/autograder.py --check-file-4
+        timeout: 10
+        max-score: 14
+    - name: SYSTEM_PROMPT
+      id: system_prompt
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SYSTEM_PROMPT
+        setup-command: ''
+        command: python autograder/autograder.py --check-code-1
+        timeout: 10
+        max-score: 10
+    - name: evaluate_prompt
+      id: evaluate_prompt
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: evaluate_prompt
+        setup-command: ''
+        command: python autograder/autograder.py --check-code-2
+        timeout: 10
+        max-score: 10
+    - name: ADVERSARIAL_TESTS
+      id: adversarial_tests
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: ADVERSARIAL_TESTS
+        setup-command: ''
+        command: python autograder/autograder.py --check-code-3
+        timeout: 10
+        max-score: 10
+    - name: Prototype Script
+      id: prototype-script
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Prototype Script
+        setup-command: ''
+        command: python autograder/autograder.py --check-code-4
+        timeout: 10
+        max-score: 10
+    - name: Safety Verification
+      id: safety-verification
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Safety Verification
+        setup-command: ''
+        command: python autograder/autograder.py --check-code-5
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        PROBLEM-SCAN_RESULTS: "${{steps.problem-scan.outputs.result}}"
+        DEEP-DIVE-REPORT_RESULTS: "${{steps.deep-dive-report.outputs.result}}"
+        AI-LOG_RESULTS: "${{steps.ai-log.outputs.result}}"
+        WORKFLOW-DIAGRAM_RESULTS: "${{steps.workflow-diagram.outputs.result}}"
+        SYSTEM_PROMPT_RESULTS: "${{steps.system_prompt.outputs.result}}"
+        EVALUATE_PROMPT_RESULTS: "${{steps.evaluate_prompt.outputs.result}}"
+        ADVERSARIAL_TESTS_RESULTS: "${{steps.adversarial_tests.outputs.result}}"
+        PROTOTYPE-SCRIPT_RESULTS: "${{steps.prototype-script.outputs.result}}"
+        SAFETY-VERIFICATION_RESULTS: "${{steps.safety-verification.outputs.result}}"
+      with:
+        runners: problem-scan,deep-dive-report,ai-log,workflow-diagram,system_prompt,evaluate_prompt,adversarial_tests,prototype-script,safety-verification
