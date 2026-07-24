@@ -1,2 +1,3 @@
 # Environment Dependencies
 # List all required python packages here.
+# pip install google-genai google-generativeai pytest
