@@ -1,7 +1,7 @@
 # Lab 02 — Deep-Dive Report
 
-**Tên nhóm:** `[ĐIỀN TÊN NHÓM]`  
-**Thành viên:** `[Nguyễn Đức Sơn — 2A202601485]`; `[Nguyễn Hoàng Tín — 2A202601603]`; `[Phùng Hoàng Phước — 2A202601215]`; `[Nguyễn Thanh Tùng - 2A202601874]`  ; `[Võ Hà Minh Huy - 2A202601373]`  
+**Tên nhóm:** `[T54]`  
+**Thành viên:** `[Nguyễn Đức Sơn — 2A202601485]`; `[Nguyễn Hoàng Tín — 2A202601603]`; `[Phùng Hồng Phước — 2A202601215]`; `[Nguyễn Thanh Tùng - 2A202601874]`  ; `[Võ Hà Minh Huy - 2A202601373]`  ; `[Nguyễn Duy Trọng - 2A202601333]`  
 **Ngày thực hiện:** 24/07/2026  
 **Bài toán:** Xanh SM — Hỗ trợ điều phối sự cố xe điện sắp hết pin
 
