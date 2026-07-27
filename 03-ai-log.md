@@ -2,8 +2,7 @@
 
 ## Thông tin cá nhân
 
-- **Họ và tên:** [Võ Hà Minh Huy]
-- **MSSV:** [2A202601373]
+
 - **Nhóm:** T54
 - **Công cụ đã sử dụng:** ChatGPT, Gemini API, Python, VS Code và GitHub Classroom
 
